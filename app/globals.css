@@ -1,26 +1,252 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================
+   SANCTUARY — iMind Psychological Services
+   Tailwind v4 CSS-based config + Global CSS
+   ========================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* ---- Fonts ---- */
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* ---- Design Token Colors ---- */
+  --color-primary: #07677f;
+  --color-primary-container: #66afca;
+  --color-primary-fixed: #b8eaff;
+  --color-primary-fixed-dim: #88d1ec;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #004152;
+  --color-on-primary-fixed: #001f28;
+  --color-on-primary-fixed-variant: #004d61;
+  --color-inverse-primary: #88d1ec;
+  --color-surface-tint: #07677f;
+
+  --color-secondary: #894f3e;
+  --color-secondary-container: #fdb19d;
+  --color-secondary-fixed: #ffdbd1;
+  --color-secondary-fixed-dim: #ffb5a0;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #794232;
+  --color-on-secondary-fixed: #370e04;
+  --color-on-secondary-fixed-variant: #6d3829;
+
+  --color-tertiary: #2b6a43;
+  --color-tertiary-container: #73b385;
+  --color-tertiary-fixed: #aff2c0;
+  --color-tertiary-fixed-dim: #93d5a5;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #004523;
+  --color-on-tertiary-fixed: #00210e;
+  --color-on-tertiary-fixed-variant: #0c522d;
+
+  --color-background: #f4faff;
+  --color-on-background: #001f2a;
+  --color-surface: #f4faff;
+  --color-surface-bright: #f4faff;
+  --color-surface-dim: #c0dfee;
+  --color-surface-variant: #c9e7f7;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #e6f6ff;
+  --color-surface-container: #d9f2ff;
+  --color-surface-container-high: #ceedfd;
+  --color-surface-container-highest: #c9e7f7;
+  --color-on-surface: #001f2a;
+  --color-on-surface-variant: #3f484c;
+  --color-inverse-surface: #163440;
+  --color-inverse-on-surface: #e0f4ff;
+
+  --color-outline: #6f787d;
+  --color-outline-variant: #bfc8cd;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* ---- Border Radius ---- */
+  --radius: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ---- Shadows ---- */
+  --shadow-ambient: 0 8px 32px 0 rgba(0, 31, 42, 0.06);
+  --shadow-ambient-lg: 0 20px 60px 0 rgba(0, 31, 42, 0.06);
+  --shadow-primary-glow: 0 8px 20px rgba(7, 103, 127, 0.25);
+  --shadow-primary-glow-lg: 0 16px 40px rgba(7, 103, 127, 0.3);
+
+  /* ---- Animations ---- */
+  --animate-float: float 20s ease-in-out infinite;
+  --animate-float-delay: float 20s ease-in-out -5s infinite;
+  --animate-float-delay2: float 20s ease-in-out -10s infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(15px, -20px) rotate(5deg);
+    }
+    66% {
+      transform: translate(-10px, 15px) rotate(-3deg);
+    }
   }
 }
 
+/* ---- Body defaults ---- */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+  color: #001f2a;
+  background-color: #f4faff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Manrope", sans-serif;
+}
+
+/* ---- Glassmorphism Nav ---- */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ---- Signature Gradient ---- */
+.gradient-primary {
+  background: linear-gradient(135deg, #07677f 0%, #66afca 100%);
+}
+
+/* ---- Floating background shapes ---- */
+.floating-shape {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* ---- Scroll Reveal ---- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Hover Lift ---- */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 31, 42, 0.08);
+}
+
+/* ---- 3D Icon Wrappers ---- */
+.icon-3d-wrapper {
+  perspective: 500px;
+}
+
+.icon-3d {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.group:hover .icon-3d {
+  transform: rotateY(15deg) rotateX(10deg) translateZ(10px);
+}
+
+/* ---- Hero image 3D tilt ---- */
+.hero-img-tilt {
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 1s ease-out;
+}
+
+.hero-img-tilt:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+/* ---- FAQ Details chevron ---- */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ---- Sanctuary progress glow ---- */
+.step-active-glow {
+  box-shadow: 0 0 0 4px rgba(7, 103, 127, 0.15),
+    0 4px 16px rgba(7, 103, 127, 0.3);
+}
+
+/* ---- Services Bento Grid ---- */
+.services-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .services-bento-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .services-bento-grid > * {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ---- Smooth scroll ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .floating-shape,
+  .scroll-reveal,
+  .hover-lift,
+  .icon-3d,
+  .hero-img-tilt {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-shape {
+    opacity: 0.08;
+    animation-duration: 30s;
+  }
+}
+
+/* ---- Material Symbols ---- */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  display: inline-block;
+  vertical-align: middle;
 }

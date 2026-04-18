@@ -1,0 +1,32 @@
+{
+  "name": "projects/sanctuary-imind",
+  "projectId": "sanctuary-imind",
+  "title": "Sanctuary — iMind Psychological Services",
+  "visibility": "PRIVATE",
+  "projectType": "PROJECT_DESIGN",
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "LIGHT",
+    "font": "MANROPE",
+    "roundness": "ROUND_TWENTY_FOUR",
+    "customColor": "#07677f",
+    "saturation": 3
+  },
+  "screens": {
+    "index": {
+      "id": "sanctuary-home",
+      "sourceScreen": "projects/sanctuary-imind/screens/sanctuary-home",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 8200
+    }
+  },
+  "metadata": {
+    "userRole": "OWNER",
+    "framework": "nextjs",
+    "cssFramework": "tailwindcss-v4",
+    "localPath": "c:/Users/dwens/Downloads/stitch_modern_psychology_clinic_redesign/sanctuary-imind"
+  }
+}
